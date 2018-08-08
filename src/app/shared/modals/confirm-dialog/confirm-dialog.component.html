@@ -1,0 +1,12 @@
+<div class="confirm-container">
+  <h4>{{ data.title }}</h4>
+  <p class="content" [innerHtml]="data.text"></p>
+  <div class="confirm-button-container">
+    <div fxFlex="60"></div>
+    <div fxFlex="40">
+      <div class="btn-control">
+        <button mat-raised-button class="mat-raised-button mat-primary confirm-btn" (click)="confirm()">{{ data.confirm }}</button>
+      </div>
+    </div>
+  </div>
+</div>

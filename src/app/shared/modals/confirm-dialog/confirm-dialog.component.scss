@@ -1,0 +1,36 @@
+.confirm-container {
+    padding: 18px 30px 30px 30px;
+}
+
+.confirm-container h4 {
+    color: #646668 !important;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+.confirm-container hr {
+    margin-bottom: 20px;
+}
+
+.confirm-container p.content {
+    color: #646668;
+    font-size: 14px;
+}
+
+.confirm-container .login-button-container {
+    display: flex;
+    margin-top:20px;
+}
+
+.btn-control {
+    display: flex;
+}
+
+.cancel-btn {
+    margin-right: 5px;
+}
+
+.confirm-btn {
+    text-align: center;
+}

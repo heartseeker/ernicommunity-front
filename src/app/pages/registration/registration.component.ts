@@ -2,7 +2,8 @@ import { UserRegistrationModel } from './../../shared/models/user-registration.m
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../shared/service/user.service';
-
+import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-registration',
@@ -19,6 +20,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -50,7 +52,27 @@ export class RegistrationComponent implements OnInit {
     };
 
     this.userService.create(data).subscribe(res => {
-      console.log('successfully created!', data);
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        disableClose: false,
+        data: {
+          title: 'Successfully Registered',
+          /* tslint:disable */
+          text: `Thank you for registering in our event.`,
+          /* tslint:enable */
+          confirm: `OK`
+        }
+      });
+    }, (err) => {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        disableClose: false,
+        data: {
+          title: 'Error Occured',
+          /* tslint:disable */
+          text: `Unexpected error occured.`,
+          /* tslint:enable */
+          confirm: `OK`
+        }
+      });
     });
   }
 
