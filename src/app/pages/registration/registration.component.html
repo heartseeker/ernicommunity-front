@@ -1,0 +1,51 @@
+<div class="registration-container">
+
+  <div class="body-content">
+    <!-- Banner -->
+    <div class="registration-banner">
+      <img class="image-banner" src="/assets/images/header.png">
+    </div>
+    <!-- Form -->
+    <div class="registration-form-container">
+      <form [formGroup]="form" class="registration-form">
+        <mat-form-field class="input-form-field">
+          <input formControlName="first_name" matInput placeholder="First Name" required>
+          <mat-error>You must enter a value</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="input-form-field">
+          <input formControlName="last_name" matInput placeholder="Last Name" required>
+          <mat-error>You must enter a value</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="input-form-field">
+          <input formControlName="company" matInput placeholder="Company" required>
+          <mat-error>You must enter a value</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="input-form-field">
+          <input formControlName="position" matInput placeholder="Position" required>
+          <mat-error>You must enter a value</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="input-form-field">
+          <input formControlName="contact" matInput placeholder="Contact No." required>
+          <mat-error>You must enter a value</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field class="input-form-field">
+          <input formControlName="email" matInput placeholder="Email" required>
+          <mat-error>You must enter a valid email</mat-error>
+        </mat-form-field>
+      </form>
+
+      <div class="map-container">
+        <div class="location-message">{{ locMsg }}</div>
+        <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+        <button mat-raised-button [disabled]="!form.valid" color="primary" class="submit-btn" (click)="submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+@mixin iphone5($width) {
+    /* Portrait and Landscape */
+    @media only screen 
+    and (min-device-width: 320px) 
+    and (max-device-width: 568px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        width: $width !important;
+    }
+}
+
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+@mixin iphone6($width) {
+   /* Portrait and Landscape */
+   @media only screen 
+   and (min-device-width: 375px) 
+   and (max-device-width: 667px) 
+   and (-webkit-min-device-pixel-ratio: 2) { 
+    width: $width !important;
+   }
+}
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-banner {
+    max-width: 100%;
+    height: auto;
+}
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 34.5rem;
+    @include iphone6(20rem);
+}
+
+.registration-form-container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 1rem 0;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-form-field {
+    padding: 0 2rem;
+    margin-bottom: .1rem;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
+
+.location-message {
+    margin-bottom: .5rem;
+    font-size: .8rem;
+}
+
+agm-map {
+    height: 20rem;
+}
+
+.submit-btn {
+    margin-top: 1rem;
+    align-self: center;
+    width: 15rem;
+}
