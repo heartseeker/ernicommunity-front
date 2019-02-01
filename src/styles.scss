@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+html, body {
+    @media only screen 
+    and (min-device-width: 800px) 
+    and (-webkit-min-device-pixel-ratio: 1) { 
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
 body{
     background-image:url('/assets/images/bg.jpg'); /*your background image*/  
     background-repeat:no-repeat; /*we want to have one single image not a repeated one*/  
@@ -9,4 +18,16 @@ body{
     filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.image.jpg',sizingMethod='scale');
     -ms-filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.jpg',sizingMethod='scale')";
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+ }
+
+ app-root, app-pages, app-registration {
+     display: flex;
+     flex-direction: column;
+     flex: 1;
  }

@@ -1,5 +1,5 @@
 import { UserRegistrationModel } from './../../shared/models/user-registration.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../shared/service/user.service';
 import { ConfirmDialogComponent } from '../../shared/modals/confirm-dialog/confirm-dialog.component';
@@ -16,6 +16,24 @@ export class RegistrationComponent implements OnInit {
   lng: number = 121.043806;
   locMsg: string;
   form: FormGroup;
+  video = true;
+  controlLabel = 'On';
+  @ViewChild('videoPlayer') videoPlayer: any;
+
+  // @ViewChild('videoPlayer') set ft(vidplayer) {
+    // const video = vidplayer.nativeElement;
+    // video.nativeElement.pause();
+    // video.nativeElement.play();
+
+    // const promise = video.nativeElement.play();
+
+    // const isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+
+    // if (!isPlaying) {
+    //   console.log('playyyy!');
+    //   video.play();
+    // }
+  // }
 
   constructor(
     private fb: FormBuilder,
@@ -35,6 +53,8 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
     });
 
+    const video = this.videoPlayer.nativeElement;
+    video.muted = 'muted';
   }
 
   /**
@@ -82,6 +102,11 @@ export class RegistrationComponent implements OnInit {
    */
   field(name) {
     return this.form.controls[name];
+  }
+
+  slide() {
+    this.video = !this.video;
+    this.controlLabel = this.video ? 'On' : 'Off';
   }
 
 }
