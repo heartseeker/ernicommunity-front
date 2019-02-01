@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_endpoint: 'https://ernicommunity.herokuapp.com/api/'
+  api_endpoint: 'http://ernicommunityevents.azurewebsites.net/'
 };

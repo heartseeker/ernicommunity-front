@@ -1,8 +1,8 @@
 export interface UserRegistrationModel {
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    lastName: string;
     company: string;
     position: string;
-    contact: string;
+    contactNo: string;
     email: string;
 }

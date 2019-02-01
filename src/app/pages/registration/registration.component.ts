@@ -63,11 +63,11 @@ export class RegistrationComponent implements OnInit {
    */
   submit() {
     const data: UserRegistrationModel = {
-      first_name: this.field('first_name').value,
-      last_name: this.field('last_name').value,
+      firstName: this.field('first_name').value,
+      lastName: this.field('last_name').value,
       company: this.field('company').value,
       position: this.field('position').value,
-      contact: this.field('contact').value,
+      contactNo: this.field('contact').value,
       email: this.field('email').value,
     };
 

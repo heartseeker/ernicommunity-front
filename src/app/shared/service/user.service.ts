@@ -18,6 +18,6 @@ export class UserService {
    * @param payload
    */
   create(payload): Observable<UserRegistrationModel> {
-    return this.http.post<UserRegistrationModel>('users', payload);
+    return this.http.post<UserRegistrationModel>('user', payload);
   }
 }
