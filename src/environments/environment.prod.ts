@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_endpoint: 'http://ernicommunityevents.azurewebsites.net/'
+  api_endpoint: 'https://ernicommunityevents.azurewebsites.net'
 };

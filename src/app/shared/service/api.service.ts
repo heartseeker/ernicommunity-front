@@ -18,6 +18,7 @@ export class ApiService {
   }
 
   post<T>(endpoint: string, payload): Observable<any> {
+    console.log(`${environment.api_endpoint}/${endpoint}`);
     return this.http.post(`${environment.api_endpoint}/${endpoint}`, payload);
   }
 
