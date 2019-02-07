@@ -22,7 +22,11 @@
 
 .registration-container {
     display: flex;
-    justify-content: center;
+    @media only screen 
+    and (max-device-width: 1080px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        justify-content: center;
+    }
 }
 
 .image-banner {
@@ -35,7 +39,17 @@
     flex-direction: column;
     justify-content: center;
     width: 34.5rem;
+
+    @media only screen 
+    and (min-device-width: 1200px) 
+    and (-webkit-min-device-pixel-ratio: 1) { 
+        margin-left: 17rem;
+    }
+
     @include iphone6(20rem);
+    -webkit-box-shadow: 0px 13px 40px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 13px 40px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 13px 40px 0px rgba(0,0,0,0.75);
 }
 
 .registration-form-container {
@@ -82,8 +96,14 @@ agm-map {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex: 1;
+
+    // @media only screen 
+    // and (min-device-width: 320px) 
+    // and (max-device-width: 480px)
+    // and (-webkit-min-device-pixel-ratio: 2) {
+    //     justify-content: center;
+    // }
 }
 
 .body-content {

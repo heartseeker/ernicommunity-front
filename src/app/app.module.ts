@@ -5,7 +5,7 @@ import { PagesModule } from './pages/pages.module';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HTTPListener, HTTPStatus } from './core/interceptor';
-
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +21,8 @@ const routes: Routes = [{
     BrowserModule,
     RouterModule.forRoot(routes),
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingBarHttpClientModule
   ],
   providers: [
     HTTPStatus,

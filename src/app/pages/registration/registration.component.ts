@@ -20,21 +20,6 @@ export class RegistrationComponent implements OnInit {
   controlLabel = 'On';
   @ViewChild('videoPlayer') videoPlayer: any;
 
-  // @ViewChild('videoPlayer') set ft(vidplayer) {
-    // const video = vidplayer.nativeElement;
-    // video.nativeElement.pause();
-    // video.nativeElement.play();
-
-    // const promise = video.nativeElement.play();
-
-    // const isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
-
-    // if (!isPlaying) {
-    //   console.log('playyyy!');
-    //   video.play();
-    // }
-  // }
-
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -53,8 +38,8 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
     });
 
-    const video = this.videoPlayer.nativeElement;
-    video.muted = 'muted';
+    // const video = this.videoPlayer.nativeElement;
+    // video.muted = 'muted';
   }
 
   /**
