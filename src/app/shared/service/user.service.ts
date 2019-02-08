@@ -20,4 +20,11 @@ export class UserService {
   create(payload): Observable<UserRegistrationModel> {
     return this.http.post<UserRegistrationModel>('user', payload);
   }
+
+  /**
+   * get list of registered users
+   */
+  list(): Observable<any> {
+    return this.http.get('user');
+  }
 }

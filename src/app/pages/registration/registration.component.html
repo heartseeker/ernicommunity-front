@@ -27,7 +27,7 @@
         </mat-form-field>
         
         <mat-form-field class="input-form-field">
-          <input formControlName="company" matInput placeholder="Company" required>
+          <input formControlName="company" matInput placeholder="Company / School" required>
           <mat-error>You must enter a value</mat-error>
         </mat-form-field>
         
@@ -52,7 +52,10 @@
         <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
-        <button mat-raised-button [disabled]="!form.valid" color="primary" class="submit-btn" (click)="submit()">Submit</button>
+        <button mat-raised-button [disabled]="!form.valid || loading" color="primary" class="submit-btn" (click)="submit()">
+          <mat-progress-bar *ngIf="loading" mode="indeterminate" ></mat-progress-bar>
+          Submit
+        </button>
       </div>
     </div>
   </div>

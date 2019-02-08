@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material';
 })
 export class RegistrationComponent implements OnInit {
 
+  limit = 50;
   lat: number = 14.588079;
   lng: number = 121.043806;
   locMsg: string;
@@ -19,6 +20,9 @@ export class RegistrationComponent implements OnInit {
   video = true;
   controlLabel = 'On';
   @ViewChild('videoPlayer') videoPlayer: any;
+
+  loading: boolean = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -47,6 +51,9 @@ export class RegistrationComponent implements OnInit {
    * @return void
    */
   submit() {
+
+    this.loading = true;
+
     const data: UserRegistrationModel = {
       firstName: this.field('first_name').value,
       lastName: this.field('last_name').value,
@@ -56,28 +63,62 @@ export class RegistrationComponent implements OnInit {
       email: this.field('email').value,
     };
 
-    this.userService.create(data).subscribe(res => {
-      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const p = new Promise((resolve, reject) => {
+      return this.userService.list().subscribe((users) => {
+        if (users.length > this.limit) {
+          reject(false);
+        } else {
+          // continue to register
+          resolve(true);
+        }
+      }, err => {
+        this.unexpectedError();
+      });
+    });
+
+    p.then(() => {
+      this.userService.create(data).subscribe(res => {
+        this.loading = false;
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+          disableClose: false,
+          data: {
+            title: 'Successfully Registered',
+            /* tslint:disable */
+            text: `Thank you for registering in our event.`,
+            /* tslint:enable */
+            confirm: `OK`
+          }
+        });
+      }, (err) => {
+        this.unexpectedError();
+      });
+    })
+    .catch(() => {
+      this.loading = false;
+      this.dialog.open(ConfirmDialogComponent, {
         disableClose: false,
         data: {
-          title: 'Successfully Registered',
+          title: 'Sorry already reach the limit',
           /* tslint:disable */
-          text: `Thank you for registering in our event.`,
+          text: `Please try again next event.`,
           /* tslint:enable */
           confirm: `OK`
         }
       });
-    }, (err) => {
-      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-        disableClose: false,
-        data: {
-          title: 'Error Occured',
-          /* tslint:disable */
-          text: `Unexpected error occured.`,
-          /* tslint:enable */
-          confirm: `OK`
-        }
-      });
+    });
+  }
+
+  unexpectedError() {
+    this.loading = false;
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      disableClose: false,
+      data: {
+        title: 'Error Occured',
+        /* tslint:disable */
+        text: `Unexpected error occured.`,
+        /* tslint:enable */
+        confirm: `OK`
+      }
     });
   }
 
